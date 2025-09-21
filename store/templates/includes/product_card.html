@@ -1,0 +1,37 @@
+{% comment %}
+This template renders a single product card.
+It expects a 'product' object in its context.
+{% endcomment %}
+
+{% load static %}
+{% load product_images %}
+
+<div class="col mb-5">
+    <div class="card h-100">
+
+        {% if product.is_sale %}
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+        {% endif %}
+
+        <img class="card-img-top" src="{% static product.name|get_product_image %}" alt="{{ product.name }}" height="250" />
+        
+        <div class="card-body p-4">
+            <div class="text-center">
+                <h5 class="fw-bolder">{{ product.name }}</h5>
+                
+                {% if product.is_sale %}
+                <span class="text-muted text-decoration-line-through">${{ product.price }}</span>
+                ${{ product.sale_price }}
+                {% else %}
+                ${{ product.price }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a>
+            </div>
+        </div>
+    </div>
+</div>
