@@ -1,82 +1,231 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <center>
-            <div class="col-12">
-                <p align="justify">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                          <div class="col-md-2">
-                            {% load static %}
-                            {% load product_images %}
-                            <img src="{% static product.name|get_product_image %}" class="img-fluid rounded-start" alt="{{ product.name }}">
-                          </div>
-                          <div class="col-md-9">
-                            <div class="card-body">
-                              <h5 class="card-title">{{ product.name }}</h5>
-
-                                <!-- Saled Product price-->
-                                {% if product.is_sale  %}
-                                <span class="text-muted text-decoration-line-through">${{ product.price }}</span>
-                                ${{ product.sale_price}}
-                                {% else %}
-                                <!-- Product price-->
-                                ${{ product.price}}
-                                {% endif %}
-
-                              <p class="card-text justify"> {{ product.description }} </p>
-                              <br>
-                              <div class="row justify-content-center">
-                                <div class="col-md-3">Quantity:</div>
-                                <div class="col-md-2">
-                                  <select class="form-select form-select-sm" id="qty-cart">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <br><br>
-                              <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
-                              <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Add To Cart</button>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        {% load static %}
+                        {% load product_images %}
+                        <div class="position-relative">
+                            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static product.name|get_product_image %}{% endif %}" 
+                                 class="img-fluid rounded-start h-100 w-100" 
+                                 alt="{{ product.name }}" 
+                                 style="object-fit: cover; min-height: 400px;">
+                            
+                            {% if product.is_sale %}
+                            <div class="badge text-white position-absolute" style="top: 1rem; right: 1rem; background: linear-gradient(135deg, #ff6b6b, #feca57); font-size: 1rem;">
+                                Save ${{ product.price|floatformat:2|add:"-"|add:product.sale_price|floatformat:2 }}
                             </div>
-                          </div>
+                            {% endif %}
+                            
+                            {% if product.featured %}
+                            <div class="badge text-white position-absolute" style="top: 1rem; left: 1rem; background: linear-gradient(135deg, #daa520, #8b4513); font-size: 1rem;">
+                                Featured
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
-                </p>
+                    
+                    <div class="col-md-6">
+                        <div class="card-body p-5">
+                            <div class="mb-4">
+                                <h1 class="card-title fw-bold mb-3" style="color: #2c1810;">{{ product.name }}</h1>
+                                
+                                {% if product.brand %}
+                                <p class="text-muted mb-2"><strong>Brand:</strong> {{ product.brand }}</p>
+                                {% endif %}
+                                
+                                {% if product.category %}
+                                <p class="text-muted mb-2"><strong>Category:</strong> {{ product.category.name }}</p>
+                                {% endif %}
+                            </div>
+
+                            <!-- Price Section -->
+                            <div class="mb-4">
+                                {% if product.is_sale %}
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="text-muted text-decoration-line-through me-3 fs-5">${{ product.price }}</span>
+                                    <span class="fw-bold fs-3" style="color: #8b4513;">${{ product.sale_price }}</span>
+                                    <span class="badge bg-danger ms-2">Sale!</span>
+                                </div>
+                                {% else %}
+                                <span class="fw-bold fs-3" style="color: #8b4513;">${{ product.price }}</span>
+                                {% endif %}
+                            </div>
+
+                            <!-- Product Details -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Product Details</h6>
+                                
+                                {% if product.material %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Material:</strong></div>
+                                    <div class="col-sm-8">{{ product.material }}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.carat %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Carat:</strong></div>
+                                    <div class="col-sm-8">{{ product.carat }} ct</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.gemstone %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Gemstone:</strong></div>
+                                    <div class="col-sm-8">{{ product.gemstone }}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.shade %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Shade:</strong></div>
+                                    <div class="col-sm-8">{{ product.shade }}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.skin_type %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Skin Type:</strong></div>
+                                    <div class="col-sm-8">{{ product.skin_type }}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.color %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Color:</strong></div>
+                                    <div class="col-sm-8">{{ product.color }}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.size %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Size:</strong></div>
+                                    <div class="col-sm-8">{{ product.size }}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if product.weight %}
+                                <div class="row mb-2">
+                                    <div class="col-sm-4"><strong>Weight:</strong></div>
+                                    <div class="col-sm-8">{{ product.weight }}g</div>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-2">Description</h6>
+                                <p class="card-text">{{ product.description }}</p>
+                            </div>
+
+                            <!-- Stock Status -->
+                            <div class="mb-4">
+                                {% if product.in_stock %}
+                                <span class="badge bg-success fs-6"><i class="bi bi-check-circle me-1"></i>In Stock</span>
+                                {% else %}
+                                <span class="badge bg-danger fs-6"><i class="bi bi-x-circle me-1"></i>Out of Stock</span>
+                                {% endif %}
+                            </div>
+
+                            <!-- Add to Cart Section -->
+                            {% if product.in_stock %}
+                            <div class="mb-4">
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-md-3">
+                                        <label for="qty-cart" class="form-label fw-bold">Quantity:</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-select" id="qty-cart">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex">
+                                    <a href="{% url 'home' %}" class="btn btn-outline-secondary me-md-2">
+                                        <i class="bi bi-arrow-left me-1"></i>Continue Shopping
+                                    </a>
+                                    <button type="button" value="{{ product.id }}" class="btn btn-lg flex-fill" 
+                                            style="background: linear-gradient(135deg, #daa520, #8b4513); color: white; border: none;" 
+                                            id="add-cart">
+                                        <i class="bi bi-bag-plus me-2"></i>Add To Cart
+                                    </button>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="d-grid gap-2">
+                                <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-arrow-left me-1"></i>Continue Shopping
+                                </a>
+                                <button class="btn btn-secondary btn-lg" disabled>
+                                    <i class="bi bi-x-circle me-2"></i>Out of Stock
+                                </button>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </center>
+        </div>
     </div>
 </div>
 
 <script>
-$(document).on('click', '#add-cart', function(e){
-  e.preventDefault();
-  $.ajax({
-    type: 'POST',
-    url: '{% url 'cart_add' %}',
-    data: {
-      product_id:  $('#add-cart').val(),
-      product_qty: $('#qty-cart option:selected').text(),
-      csrfmiddlewaretoken: '{{ csrf_token }}',
-      action: 'post'
-    },
+// Only add the script if jQuery is loaded
+if (typeof $ !== 'undefined') {
+    $(document).on('click', '#add-cart', function(e){
+      e.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_add' %}',
+        data: {
+          product_id:  $('#add-cart').val(),
+          product_qty: $('#qty-cart option:selected').text(),
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          action: 'post'
+        },
 
-    success: function(json){
-      // console.log(json)
-      document.getElementById("cart_quantity").textContent = json.qty
-    },
+        success: function(json){
+          // console.log(json)
+          document.getElementById("cart_quantity").textContent = json.qty
+          
+          // Show success message
+          const button = document.getElementById('add-cart');
+          const originalText = button.innerHTML;
+          button.innerHTML = '<i class="bi bi-check me-2"></i>Added to Cart!';
+          button.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+          
+          setTimeout(function() {
+            button.innerHTML = originalText;
+            button.style.background = 'linear-gradient(135deg, #daa520, #8b4513)';
+          }, 2000);
+        },
 
-    error: function(xhr, errmsg, err){
-
-    }
-    
-  });
-})
+        error: function(xhr, errmsg, err){
+          console.log('Error adding to cart:', errmsg);
+        }
+        
+      });
+    });
+} else {
+    // Fallback for when jQuery is not available
+    document.addEventListener('DOMContentLoaded', function() {
+        const addCartBtn = document.getElementById('add-cart');
+        if (addCartBtn) {
+            addCartBtn.addEventListener('click', function() {
+                alert('Product would be added to cart (jQuery not loaded)');
+            });
+        }
+    });
+}
 </script>
 
 {% endblock %}
