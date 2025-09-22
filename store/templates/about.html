@@ -1,38 +1,127 @@
 {% extends "base.html" %}
 {% block content %}
 
-<header class="bg-dark py-5">
+<header class="py-5" style="background: linear-gradient(135deg, #2c1810 0%, #8b4513 50%, #daa520 100%);">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">About Us...</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Welcome to DjangoCart</p>
+            <h1 class="display-4 fw-bolder" style="color: #daa520;">About LuxeBeauty</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Where luxury meets beauty</p>
         </div>
     </div>
 </header>
-<br><br>
-<div class="container">
-    <div class="row">
-        <center>
-            <div class="col-8">
-                <p align="justify">
-                    DjangoCart is an e-commerce website that allows you to buy products online. We have a wide range of products available for you to choose from. We have products from various categories like electronics, clothing, accessories, and many more. We have a user-friendly interface that allows you to easily navigate through the website and find the products you are looking for. We also have a secure payment gateway that ensures that your transactions are safe and secure. So, what are you waiting for? Start shopping now and get your favorite products delivered to your doorstep!
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bolder">Our Story</h2>
+                    <div class="divider-custom">
+                        <div class="divider-custom-line" style="border-color: #daa520;"></div>
+                        <div class="divider-custom-icon"><i class="bi bi-gem" style="color: #daa520;"></i></div>
+                        <div class="divider-custom-line" style="border-color: #daa520;"></div>
+                    </div>
+                </div>
+                
+                <p class="lead text-muted text-center mb-5">
+                    Founded with a passion for excellence, LuxeBeauty has been at the forefront of luxury jewelry and premium cosmetics for over a decade. We believe that every individual deserves to feel extraordinary, and our carefully curated collection reflects that philosophy.
                 </p>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center" style="background: linear-gradient(135deg, #daa520, #8b4513); width: 3rem; height: 3rem;">
+                                <i class="bi bi-gem text-white"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5 class="fw-bolder">Exquisite Jewelry</h5>
+                                <p class="text-muted">Our jewelry collection features handcrafted pieces made with the finest precious metals and gemstones. From classic diamond rings to contemporary gold necklaces, each piece tells a story of elegance and sophistication.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center" style="background: linear-gradient(135deg, #daa520, #8b4513); width: 3rem; height: 3rem;">
+                                <i class="bi bi-palette text-white"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5 class="fw-bolder">Premium Cosmetics</h5>
+                                <p class="text-muted">Our makeup collection features products from the world's most prestigious beauty brands. From long-lasting foundations to vibrant lipsticks, we offer cosmetics that enhance your natural beauty and boost your confidence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </center>
+        </div>
     </div>
-</div>
-<br>
-<div class="container">
-    <div class="row">
-        <center>
-            <div class="col-8">
-                <h2>Our Team</h2>
-                <p align="justify">
-                    We have a team of dedicated professionals who work hard to ensure that you have a great shopping experience on our website. Our team is always ready to assist you with any queries or concerns you may have. We are committed to providing you with the best products and services, and we strive to make your shopping experience as smooth and hassle-free as possible. So, if you have any questions or need any help, feel free to reach out to us, and we will be happy to assist you!
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bolder mb-4">Our Commitment</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="h-100">
+                            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary fs-2 mb-3" style="background: linear-gradient(135deg, #daa520, #8b4513) !important; width: 4rem; height: 4rem; border-radius: 0.75rem;">
+                                <i class="bi bi-shield-check text-white"></i>
+                            </div>
+                            <h3 class="fs-4 fw-bold">Authenticity</h3>
+                            <p class="text-muted">Every product is guaranteed authentic and comes with a certificate of authenticity.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="h-100">
+                            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary fs-2 mb-3" style="background: linear-gradient(135deg, #daa520, #8b4513) !important; width: 4rem; height: 4rem; border-radius: 0.75rem;">
+                                <i class="bi bi-truck text-white"></i>
+                            </div>
+                            <h3 class="fs-4 fw-bold">Fast Shipping</h3>
+                            <p class="text-muted">Secure, fast, and insured delivery to ensure your precious items arrive safely.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="h-100">
+                            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary fs-2 mb-3" style="background: linear-gradient(135deg, #daa520, #8b4513) !important; width: 4rem; height: 4rem; border-radius: 0.75rem;">
+                                <i class="bi bi-headset text-white"></i>
+                            </div>
+                            <h3 class="fs-4 fw-bold">Expert Support</h3>
+                            <p class="text-muted">Our team of beauty and jewelry experts is always ready to assist you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bolder mb-4">Our Values</h2>
+                <p class="lead text-muted mb-4">
+                    At LuxeBeauty, we believe in more than just selling products. We're committed to providing an exceptional experience that celebrates individuality, quality, and timeless elegance. Our passion for beauty and luxury drives everything we do.
                 </p>
+                <div class="row text-center">
+                    <div class="col-md-6 mb-3">
+                        <div class="feature-item">
+                            <i class="bi bi-star-fill" style="font-size: 2rem; color: #daa520;"></i>
+                            <h5 class="mt-3">Quality First</h5>
+                            <p class="text-muted">We source only the finest materials and work with trusted artisans and brands.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="feature-item">
+                            <i class="bi bi-heart-fill" style="font-size: 2rem; color: #daa520;"></i>
+                            <h5 class="mt-3">Customer Care</h5>
+                            <p class="text-muted">Your satisfaction is our priority, and we're here to help every step of the way.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </center>
+        </div>
     </div>
-</div>
+</section>
 
 {% endblock %}

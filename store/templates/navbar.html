@@ -1,36 +1,49 @@
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #2c1810 0%, #8b4513 50%, #daa520 100%);">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{% url "home" %}">DjangoCart</a>
+        <a class="navbar-brand fw-bold" href="{% url "home" %}" style="color: #daa520; font-size: 1.5rem;">
+            <i class="bi bi-gem me-2"></i>LuxeBeauty
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active text-light" aria-current="page" href="{% url "home" %}">Home</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="{% url "about" %}">About</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="{% url "about" %}">About</a></li>
 
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url "logout" %}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="{% url "logout" %}">Logout</a></li>
                 {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url "login" %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="{% url "login" %}">Login</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="{% url "register" %}">Register</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="{% url "register" %}">Register</a></li>
                 {% endif %}
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                    <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url "home" %}">All Products</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="{% url "category" "Self-help-Books" %}">Self-help Books</a></li>
-                        <li><a class="dropdown-item" href="{% url "category" 'Western-Fantasy' %}">Western Fantasy</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Rings" %}"><i class="bi bi-gem me-2"></i>Rings</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Necklaces" %}"><i class="bi bi-heart me-2"></i>Necklaces</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Earrings" %}"><i class="bi bi-circle me-2"></i>Earrings</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Bracelets" %}"><i class="bi bi-square me-2"></i>Bracelets</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Foundation" %}"><i class="bi bi-palette me-2"></i>Foundation</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Lipstick" %}"><i class="bi bi-heart-fill me-2"></i>Lipstick</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Eyeshadow" %}"><i class="bi bi-eye me-2"></i>Eyeshadow</a></li>
+                        <li><a class="dropdown-item" href="{% url "category" "Skincare" %}"><i class="bi bi-droplet me-2"></i>Skincare</a></li>
                     </ul>
                 </li>
             </ul>
             <form class="d-flex">
-                <a href="{% url "cart_summary" %}" class="btn btn-outline-dark">
-                    <i class="bi-cart-fill me-1"></i>
+                <a href="{% url "cart_summary" %}" class="btn btn-outline-light me-2">
+                    <i class="bi-heart me-1"></i>
+                    Wishlist
+                </a>
+                <a href="{% url "cart_summary" %}" class="btn" style="background-color: #daa520; color: #2c1810; border: none;">
+                    <i class="bi-bag-fill me-1"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
                 </a>
